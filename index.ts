@@ -18,8 +18,8 @@ async function searchMongo() {
     console.log(collection.collectionName);
     const documents = await collection.find().toArray();
     for (const document of documents) {
-      const stringified = JSON.stringify(document, null, 2);
-      if (stringified.includes(searchString)) {
+      const stringified = JSON.stringify(document, null, 2).toLocaleLowerCase();
+      if (stringified.includes(searchString.toLocaleLowerCase())) {
         console.error(
           "Found a match in collection:",
           collection.collectionName,
